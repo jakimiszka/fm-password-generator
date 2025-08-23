@@ -1,0 +1,33 @@
+@use '../util' as u;
+
+$font-size-1: 3rem;
+$font-size-2: 2rem;
+$font-size-3: 1.5rem;
+$font-size-4: 1.25rem;
+$font-size-5: 1rem;
+$font-size-6: 0.8125rem;
+
+$line-height-1: 4.4375rem;
+$line-height-2: 2.9375rem;
+$line-height-3: 2.25rem;
+$line-height-4: 1.875rem;
+$line-height-5: 1.5rem;
+$line-height-6: 1.1875rem;
+
+$letter-spacing-1: -0.0625rem;
+$letter-spacing-2: -0.042rem;
+
+h1,h2,h3{
+    margin: 0;
+}
+
+p{
+    margin: 0;
+}
+
+a, 
+a:visited, 
+a:active{
+    text-decoration: none;
+}
+
