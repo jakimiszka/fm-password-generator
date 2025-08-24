@@ -5,25 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./dist/styles.css">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
   <title>Frontend Mentor | Password generator app</title>
 </head>
 <body>
+  <h1>Password Generator</h1>
+  <div class="grid">
+    <div class="grid__password">
+      P4$5W0rD!
+    </div>
+    <div class="grid__generator">
+        <label for="length">Character Length</label>
+        <input type="range" id="length" name="length" min="0" max="11" />
 
-  Password Generator
-
-  P4$5W0rD!
-
-  Character Length
-
-  Include Uppercase Letters
-  Include Lowercase Letters
-  Include Numbers
-  Include Symbols
-
-  Strength
-
-  Generate
-
+        <ul>
+          <li>Include Uppercase Letters</li>
+          <li>Include Lowercase Letters</li>
+          <li>Include Numbers</li>
+          <li>Include Symbols</li>
+        </ul>
+        <div class="grid__generator--strength">Strength</div>
+        <button>Generate</button>
+    </div>
+  </div>
+  <script defer src="./js/script.js"></script>
 </body>
 </html>
