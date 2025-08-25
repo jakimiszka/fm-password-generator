@@ -8,23 +8,50 @@
   <title>Frontend Mentor | Password generator app</title>
 </head>
 <body>
-  <h1>Password Generator</h1>
   <div class="grid">
+    <p class="grid__title">Password Generator</p>
     <div class="grid__password">
-      P4$5W0rD!
+      <input class="grid__password--input_text" type="text" value="P4$5W0rD!"/>
     </div>
     <div class="grid__generator">
-        <label for="length">Character Length</label>
-        <input type="range" id="length" name="length" min="0" max="11" />
-
-        <ul>
-          <li>Include Uppercase Letters</li>
-          <li>Include Lowercase Letters</li>
-          <li>Include Numbers</li>
-          <li>Include Symbols</li>
-        </ul>
-        <div class="grid__generator--strength">Strength</div>
-        <button>Generate</button>
+        <div class="grid__generator--slider">
+          <div class="grid__generator--slider--wrapper">
+            <label class="grid__generator--slider--input_label" for="length">Character Length</label>
+            <span class="grid__generator--slider--input_value">12</span>
+          </div>
+          <input class="grid__generator--slider--input_slider" type="range" id="length" name="length" min="0" max="11" />
+        </div>
+        <form class='grid__generator--options'>
+          <div>
+            <input type="radio" id="uppercase" name="radio_buttons" value="" checked />
+            <label for="uppercase">Include Uppercase Letters</label>
+          </div>
+          <div>
+            <input type="radio" id="lowercase" name="radio_buttons" value="" />
+            <label for="lowercase">Include Lowercase Letters</label>
+          </div>
+          <div>
+            <input type="radio" id="numbers" name="radio_buttons" value="" />
+            <label for="numbers">Include Numbers</label>
+          </div>
+          <div>
+            <input type="radio" id="symbols" name="radio_buttons" value="" />
+            <label for="symbols">Include Symbols</label>
+          </div>
+        </form>
+        <div class="grid__generator--strength">
+          Strength
+          <ul class="grid__generator--strength--level">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+        <button class="grid__generator--button_generate">
+          GENERATE
+          <img src="../assets/images/icon-arrow-right.svg" alt="arrow"/>
+        </button>
     </div>
   </div>
   <script defer src="./js/script.js"></script>
