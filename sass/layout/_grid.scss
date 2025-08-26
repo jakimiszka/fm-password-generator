@@ -1,38 +1,57 @@
 @use "../util" as u;
 @use '../globals' as g;
 
-input[type="radio"] {
-  appearance: square;
-  background-color: transparent;
-  margin: 0;
-  font: inherit;
-  width: 1.15em;
-  height: 1.15em;
-  border: 0.15em solid var(--white);
-  line-height: 1.1;
+.checkbox{
+    display: flex;
+    //align-items: center;
+    gap: u.$spacing-100;
+    // margin-bottom: u.$spacing-100;
+    margin: 0;
+    padding: 0;
 }
 
-// input[type="radio"]::before {
-//   content: "";
-//   width: 0.65em;
-//   height: 0.65em;
-//   transform: scale(0);
-//   transition: 120ms transform ease-in-out;
-//   //box-shadow: inset 1em 1em var(--green-200);
-//   color:  var(--green-200);
+.checkbox input[type="checkbox"]{
+    opacity: 0;     // hide default checkbox
+}
+
+.checkbox label::before{
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--grey-600);
+    background-color: var(--grey-800);
+}
+
+.checkbox label::after{
+    content: url('../assets/images/icon-check.svg');;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--grey-600);
+    background-color: var(--white);
+}
+// .checkbox label{
+//     position: relative;
+// }
+// .checkbox label::before,
+// .checkbox label::after{
+//     position: absolute;
+// }
+// .checkbox label::before{
+//     top: -2px;
+//     left: -35px;
+// }
+// .checkbox label::after{
+//     top: -31px;
+//     left: 2px;
 // }
 
-// input[type="radio"]:checked::before {
-//   transform: scale(1);
+// .checkbox input[type="checkbox"] + label::after{
+//     content: none;
 // }
-
-// input[type="radio"]:focus {
-//   outline: max(2px, 0.15em) solid currentColor;
-//   outline-offset: max(2px, 0.15em);
-// }
-
-// .form-control:focus-within {
-//   color: var(--green-200);
+// .checkbox input[type="checkbox"]:checked + label::after{
+//     content: ""
 // }
 
 .grid{
@@ -40,8 +59,8 @@ input[type="radio"] {
     flex-direction: column;
     border: 1px solid white;
     gap: u.$spacing-200;
-    height: 80%;
-    max-height: 539px;
+    height: auto;
+    //max-height: 539px;
     min-width: 300px;
     max-width: 343px;
     width: 100%;
@@ -74,7 +93,8 @@ input[type="radio"] {
     &__generator{
         display: flex;
         flex-direction: column;
-        height: 423px;
+        //height: 423px;
+        height: auto;
         background-color: var(--grey-800);
         gap: u.$spacing-200;
 
@@ -145,6 +165,7 @@ input[type="radio"] {
             background-color: var(--green-200);
             border: none;
             cursor: pointer;
+            margin-bottom: 1rem;
         }
     }
 }
