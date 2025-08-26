@@ -1,59 +1,6 @@
 @use "../util" as u;
 @use '../globals' as g;
 
-.checkbox{
-    display: flex;
-    //align-items: center;
-    gap: u.$spacing-100;
-    // margin-bottom: u.$spacing-100;
-    margin: 0;
-    padding: 0;
-}
-
-.checkbox input[type="checkbox"]{
-    opacity: 0;     // hide default checkbox
-}
-
-.checkbox label::before{
-    content: '';
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 1px solid var(--grey-600);
-    background-color: var(--grey-800);
-}
-
-.checkbox label::after{
-    content: url('../assets/images/icon-check.svg');;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 1px solid var(--grey-600);
-    background-color: var(--white);
-}
-// .checkbox label{
-//     position: relative;
-// }
-// .checkbox label::before,
-// .checkbox label::after{
-//     position: absolute;
-// }
-// .checkbox label::before{
-//     top: -2px;
-//     left: -35px;
-// }
-// .checkbox label::after{
-//     top: -31px;
-//     left: 2px;
-// }
-
-// .checkbox input[type="checkbox"] + label::after{
-//     content: none;
-// }
-// .checkbox input[type="checkbox"]:checked + label::after{
-//     content: ""
-// }
-
 .grid{
     display: flex;
     flex-direction: column;

@@ -60,35 +60,6 @@ a:active {
   --gradient-1: linear-gradient(to right, var(--grey-900), var(--grey-950));
 }
 
-.checkbox {
-  display: flex;
-  gap: 0.5rem;
-  margin: 0;
-  padding: 0;
-}
-
-.checkbox input[type=checkbox] {
-  opacity: 0;
-}
-
-.checkbox label::before {
-  content: "";
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 1px solid var(--grey-600);
-  background-color: var(--grey-800);
-}
-
-.checkbox label::after {
-  content: url("../assets/images/icon-check.svg");
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 1px solid var(--grey-600);
-  background-color: var(--white);
-}
-
 .grid {
   display: flex;
   flex-direction: column;
@@ -187,4 +158,90 @@ a:active {
   border: none;
   cursor: pointer;
   margin-bottom: 1rem;
+}
+
+.checkbox {
+  position: relative;
+}
+
+input[type=checkbox] {
+  opacity: 0;
+  cursor: pointer;
+}
+
+input[type=checkbox] + label {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 18px;
+}
+
+input[type=checkbox] + label::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--grey-200);
+  top: 0;
+  left: -1.8rem;
+}
+
+input[type=checkbox]:checked + label::before {
+  content: url("../assets/images/icon-check.svg");
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--green-200);
+  background-color: var(--green-200);
+  top: 0;
+  left: -1.8rem;
+  transform: scale(1);
+  transition: all 0.3s ease;
+}
+
+.slider {
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  background: var(--grey-850);
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: var(--green-200);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: var(--green-200);
+  cursor: pointer;
+}
+
+.slider:active::-webkit-slider-thumb {
+  transform: scale(1);
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+.slider:active::-webkit-slider-thumb {
+  transform: scale(1);
+  transition: all 0.3s ease;
+  background: #fff;
 }/*# sourceMappingURL=styles.css.map */
