@@ -162,6 +162,9 @@ a:active {
 
 .checkbox {
   position: relative;
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 0.6rem;
 }
 
 input[type=checkbox] {
@@ -212,8 +215,16 @@ input[type=checkbox]:checked + label::before {
   margin: 1rem 0 0.5rem 0;
 }
 
-.slider:hover {
-  opacity: 1;
+.slider:active {
+  background: var(--green-200);
+  transform: scale(1);
+  transition: all 0.8s ease;
+}
+
+.slider:disabled {
+  background: var(--grey-850);
+  transform: scale(1);
+  transition: all 0.8s ease;
 }
 
 .slider::-webkit-slider-thumb {
@@ -222,26 +233,19 @@ input[type=checkbox]:checked + label::before {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: var(--green-200);
+  background: var(--white);
   cursor: pointer;
 }
 
-.slider::-moz-range-thumb {
+.slider::-webkit-slider-thumb:hover {
+  -webkit-appearance: none;
+  appearance: none;
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: var(--green-200);
+  background: var(--grey-850);
   cursor: pointer;
-}
-
-.slider:active::-webkit-slider-thumb {
+  border: 2px solid var(--green-200);
   transform: scale(1);
   transition: all 0.3s ease;
-  background: #fff;
-}
-
-.slider:active::-webkit-slider-thumb {
-  transform: scale(1);
-  transition: all 0.3s ease;
-  background: #fff;
 }/*# sourceMappingURL=styles.css.map */
