@@ -1,5 +1,5 @@
-var slider = document.querySelector(".slider");
-var style = document.querySelector('[data="test"]');
+const slider = document.querySelector(".slider");
+const style = document.querySelector('[data="test"]');
 const generate_button = document.querySelector(".grid__generator--button_generate");
 
 slider.oninput = function() {
@@ -12,15 +12,22 @@ function setDefault(x){
         style.innerHTML = ".slider::-webkit-slider-thumb {background: var(--green-200); }"
 }
 
+// prototype
 function generatePassword() {
-    var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%&*";
-    var passwordLength = slider.value;
-    var password = "";
+    const numbers = '0123456789';
+    const letters = 'abcdefghijklmnopqrstuvwxyz';
+    const symbols = '!@#$%&*';
+    const chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%&*";
+    const passwordLength = slider.value;
+    let password = "";
     for (var i = 0; i <= passwordLength; i++) {
-        var randomNumber = Math.floor(Math.random() * chars.length);
+        // get length basen od checked boxes
+            // get random number for each category
+        const randomNumber = Math.floor(Math.random() * chars.length);
         password += chars[randomNumber];
     }
     console.log(password);
 }
+
 generate_button.addEventListener("click", generatePassword);
 
