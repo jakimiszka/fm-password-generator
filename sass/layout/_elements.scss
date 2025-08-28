@@ -55,11 +55,11 @@ input[type="checkbox"]:checked + label::before{
   transform: scale(1);
   transition: all 0.8s ease;
 }
-.slider:disabled {
-  background: var(--grey-850);
-  transform: scale(1);
-  transition: all 0.8s ease;
-}
+// .slider:not(:active) {
+//   background: var(--grey-850);
+//   transform: scale(1);
+//   transition: all 0.3s ease;
+// }
 
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
