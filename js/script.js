@@ -6,73 +6,106 @@ const uppercase_check = document.querySelector("#uppercase");
 const lowercase_check = document.querySelector("#lowercase");
 const numbers_check = document.querySelector("#numbers");
 const symbols_check = document.querySelector("#symbols");
-
-function setDefault(x){
-    Number(x) == 0 ?
-        style.innerHTML += ".slider::-webkit-slider-thumb {background: white;} " :  //.slider{background: var(--grey-850);}
-        style.innerHTML = ".slider::-webkit-slider-thumb {background: var(--white);}"; // .slider{background: var(--green-200);}
+const numbers = '0123456789',
+      letters = 'abcdefghijklmnopqrstuvwxyz',
+      symbols = '!@#$%&*-+_=\"\'<>?:;[]{}()\\/<>,.|^~';
+const options = {
+    'numbers': numbers,
+    'letters': letters,
+    'symbols': symbols,
+    'all_chars': numbers + letters + symbols
+}
+const strength = {
+    '1': 'yellow',
+    '2': 'orange',
+    '3': 'blue',
+    '4': 'red'
 }
 
-// prototype
-function generatePassword() {
-    const num = numbers_check.checked, 
-          lett_upper = uppercase_check.checked, 
-          symb = symbols_check.checked,
-          lett_lower = lowercase_check.checked;
-    const numbers = '0123456789';
-    const letters = 'abcdefghijklmnopqrstuvwxyz';       // lowercase - default
-    const symbols = '!@#$%&*-+_=\"\'<>?:;[]{}()\\/<>,.|^~';
-    let passwordLength = Number(slider.value);
-    let password = "";
+function getRandomChar(str) {
+    return str.charAt(Math.floor(Math.random() * str.length));
+}
 
-    // bug: if thers more than one checkbox selected and its last loopk 
-    //      - pass len ll exceed limit
-    while(passwordLength > 0) {
-        const randomNumber = Math.floor(Math.random() * letters.length);
-        password += letters[randomNumber];
-        passwordLength -= 1;
-        console.log('def:',passwordLength);
-        if (num) {
-            const randomNumber = Math.floor(Math.random() * numbers.length);
-            password += numbers[randomNumber];
-            passwordLength -= 1;
-            console.log('num:',passwordLength);
-        } 
-        if(lett_lower){
-            const randomNumber = Math.floor(Math.random() * letters.length);
-            password += letters[randomNumber];
-            passwordLength -= 1;
-            console.log('lower:',passwordLength);
+function recursivePassword(length, charSets, result = "") {
+    // Base case: if length is 0, return result
+    if (length === 0) return result;
+
+    // If result is shorter than charSets.length, guarantee one from each set
+    if (result.length < charSets.length) {
+        return recursivePassword(length - 1, charSets, result + getRandomChar(charSets[result.length]));
+    } else {
+        // After guaranteeing, pick randomly from all selected sets
+        const all = charSets.join('');
+        return recursivePassword(length - 1, charSets, result + getRandomChar(all));
+    }
+}
+
+function generatePassword(){
+    let password = '';
+    const passwordLength = Number(slider.value);
+    const charSets = [];
+    if (uppercase_check.checked) charSets.push(options.letters.toUpperCase());
+    if (lowercase_check.checked) charSets.push(options.letters);
+    if (numbers_check.checked) charSets.push(options.numbers);
+    if (symbols_check.checked) charSets.push(options.symbols);
+
+    if (passwordLength === 0) return '';
+    if (charSets.length === 0) {
+        // No options selected, use all chars
+        for(let i = 0; i < passwordLength; i++){
+            password += getRandomChar(options.all_chars);
         }
-        if (lett_upper) {
-            const randomNumber = Math.floor(Math.random() * letters.length);
-            password += letters[randomNumber].toLocaleUpperCase();
-            passwordLength -= 1;
-            console.log('upper:',passwordLength);
-        } 
-        if (symb) {
-            const randomNumber = Math.floor(Math.random() * symbols.length);
-            password += symbols[randomNumber];
-            passwordLength -= 1;
-            console.log('symb:',passwordLength);
-        }
-        
-        console.log(passwordLength);
+        return password;
+    }
+    if (passwordLength < charSets.length) {
+        // Not enough length to guarantee all options
+        return '';
+    }
+    
+    password = recursivePassword(passwordLength, charSets);
+
+    passwordStrength(password, charSets.length);
+
+    return password;
+}
+
+function passwordStrength(password, charSetsLength){
+    const strengthLi = document.querySelectorAll('ul > li');
+    // default
+    strengthLi.forEach((li) => {
+        li.style.backgroundColor = 'var(--grey-850)';
+        li.style.borderColor = 'var(--white)';
+    })
+    // options selected
+    const color = strength[charSetsLength];
+    for(let i=0; i< charSetsLength; i++){
+        const strengthElement = document.querySelector(`ul > li:nth-child(${i+1})`);
+        strengthElement.style.backgroundColor = color;
+        strengthElement.style.borderColor = color;
     }
 
-    console.log('pass len',password.length);
-    console.log(num, lett_lower, lett_upper, symb);
-    password = password.split('').sort(() => Math.floor(Math.random() - 0.5)).join('');
-    console.log('shuffeld: ', password )
-} 
+    // cases
+        // 1. case len per easch set
+            // lowercase == 8 -> Strong
+            // uppercase == 8 -> Strong
+            // numbers == 10 -> medium
+            // symbols == 8 -> medium   
+        // 2. mixed sets (2, 3) and length
+            
+        // 3. all sets and length
 
-console.log(uppercase_check.checked)
+    // 1. min length 6
+        // all checked - VERY STRONG
+}
 
 slider.oninput = function() {
     const sliderValue = slider.value;
-    setDefault(sliderValue);
     slider_value.innerHTML = sliderValue;
 }
-generate_button.addEventListener("click", generatePassword);
+generate_button.addEventListener("click", () =>{
+    const password = generatePassword();
+    console.log('password: ',password);
+    console.log('password len: ', password.length);
+});
 
 

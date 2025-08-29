@@ -75,3 +75,7 @@ input[type="checkbox"]:checked + label::before{
   transition: all 0.3s ease;
 }
 
+ul > li:nth-child(3) {
+  background-color: yellow;
+}
+
