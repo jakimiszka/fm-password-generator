@@ -59,7 +59,7 @@ input[type="checkbox"]:checked + label::before{
   height: 20px;
   border-radius: 50%;
   background: var(--white);
-  box-shadow: -210px 0 0 200px var(--green-200);
+  box-shadow: -510px 0 0 500px var(--green-200);
   cursor: pointer;
 }
 .slider::-webkit-slider-thumb:hover {
@@ -74,8 +74,3 @@ input[type="checkbox"]:checked + label::before{
   transform: scale(1);
   transition: all 0.3s ease;
 }
-
-ul > li:nth-child(3) {
-  background-color: yellow;
-}
-

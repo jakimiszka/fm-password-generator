@@ -11,7 +11,8 @@
   <div class="grid">
     <p class="grid__title">Password Generator</p>
     <div class="grid__password">
-      <input class="grid__password--input_text" type="text" value="P4$5W0rD!"/>
+      <div class="grid__password--input_text">P4$5W0rD!</div>
+      <img class='copy_button' src="../assets/images/icon-copy.svg" alt="clipboard"/>
     </div>
     <div class="grid__generator">
         <div class="grid__generator--slider">
@@ -19,7 +20,7 @@
             <label class="grid__generator--slider--input_label" for="length">Character Length</label>
             <span class="grid__generator--slider--input_value">0</span>
           </div>
-          <input class="slider" type="range" id="length" name="length" min="0" max="12" value="0" />
+          <input class="slider" type="range" id="length" name="length" min="0" max="20" value="0" />
         </div>
         <form class='grid__generator--options'>
           <div class="checkbox">
@@ -40,13 +41,17 @@
           </div>
         </form>
         <div class="grid__generator--strength">
-          Strength
-          <ul class="grid__generator--strength--level">
+          STRENGTH
+          <div class="strength_wrapper">
+            <p class="strength_level"></p>
+            <ul class="grid__generator--strength--level">
             <li></li>
             <li></li>
             <li></li>
             <li></li>
           </ul>
+          </div>
+          
         </div>
         <button class="grid__generator--button_generate">
           GENERATE
