@@ -53,22 +53,20 @@ function generatePassword(){
     let password = '';
     const passwordLength = Number(slider.value);
     const charSets = getcharSets();
-
+    
     if (passwordLength === 0) return '';
+    // No options selected, use all chars
     if (charSets.length === 0) {
-        // No options selected, use all chars
         for(let i = 0; i < passwordLength; i++){
             password += getRandomChar(options.all_chars);
         }
         return password;
     }
+    // Not enough length to guarantee all options
     if (passwordLength < charSets.length) {
-        // Not enough length to guarantee all options
         return '';
     }
-    
     password = recursivePassword(passwordLength, charSets);
-
     passwordStrength(password, charSets.length);
 
     return password;

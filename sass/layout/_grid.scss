@@ -1,18 +1,40 @@
 @use "../util" as u;
 @use '../globals' as g;
 
+.disabled{
+    opacity: 0.5;
+    background-color: var(--grey-600);
+    cursor: not-allowed;
+}
+
+.strength_wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.copy_button{
+    cursor: pointer;
+    padding-right: 1rem;
+    height: 1.25rem;
+
+    @include u.breakpoint(medium){
+        font-size: g.$font-size-2;
+        height: 1.563rem;
+    }
+}
+
 .grid{
     display: flex;
     flex-direction: column;
     gap: u.$spacing-200;
     height: auto;
-    min-width: 300px;
-    max-width: 343px;
+    min-width: 18.75rem;
+    max-width: 21.438rem;
     width: 100%;
     padding: 1rem;
 
     @include u.breakpoint(medium){
-        max-width: 540px;
+        max-width: 33.75rem;
     }
 
     &__title{
@@ -25,12 +47,11 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: var(--grey-800);
-    
+        background-color: var(--grey-800);    
         &--input_text{
             display: flex;
             align-items: center;
-            height: 65px;
+            height: 4.063rem;
             font-size: g.$font-size-3;
             color: var(--grey-700);
             background-color: transparent;
@@ -70,7 +91,7 @@
             }
 
             &--input_value{
-                height: 28px;
+                height: 1.75rem;
                 font-size: g.$font-size-2;
                 color: var(--green-200);
                 background-color: transparent;
@@ -86,7 +107,7 @@
         }
 
         &--strength{
-            height: 56px;
+            height: 3.5rem;
             font-size: g.$font-size-4;
             color: var(--grey-600);
             background-color: var(--grey-850);
@@ -105,14 +126,14 @@
                 list-style-type: none;
             }
             &--level > li{
-                width: 10px;
-                height: 28px;
+                width: 0.625rem;
+                height: 1.75rem;
                 border: 1px solid var(--white);
             }
         }
 
         &--button_generate{
-            height: 56px;
+            height: 3.5rem;
             font-size: g.$font-size-4;
             color: var(--grey-800);
             background-color: var(--green-200);
@@ -120,27 +141,5 @@
             cursor: pointer;
             margin-bottom: 1rem;
         }
-    }
-}
-
-.disabled{
-    opacity: 0.5;
-    background-color: var(--grey-600);
-    cursor: not-allowed;
-}
-
-.strength_wrapper{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-.copy_button{
-    cursor: pointer;
-    padding-right: 1rem;
-    height: 20px;
-
-    @include u.breakpoint(medium){
-        font-size: g.$font-size-2;
-        height: 25px;
     }
 }

@@ -60,19 +60,43 @@ a:active {
   --gradient-1: linear-gradient(to right, var(--grey-900), var(--grey-950));
 }
 
+.disabled {
+  opacity: 0.5;
+  background-color: var(--grey-600);
+  cursor: not-allowed;
+}
+
+.strength_wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.copy_button {
+  cursor: pointer;
+  padding-right: 1rem;
+  height: 1.25rem;
+}
+@media (min-width: 820px) {
+  .copy_button {
+    font-size: 1.5rem;
+    height: 1.563rem;
+  }
+}
+
 .grid {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   height: auto;
-  min-width: 300px;
-  max-width: 343px;
+  min-width: 18.75rem;
+  max-width: 21.438rem;
   width: 100%;
   padding: 1rem;
 }
 @media (min-width: 820px) {
   .grid {
-    max-width: 540px;
+    max-width: 33.75rem;
   }
 }
 .grid__title {
@@ -89,7 +113,7 @@ a:active {
 .grid__password--input_text {
   display: flex;
   align-items: center;
-  height: 65px;
+  height: 4.063rem;
   font-size: 1.125rem;
   color: var(--grey-700);
   background-color: transparent;
@@ -125,7 +149,7 @@ a:active {
   color: var(--grey-600);
 }
 .grid__generator--slider--input_value {
-  height: 28px;
+  height: 1.75rem;
   font-size: 1.5rem;
   color: var(--green-200);
   background-color: transparent;
@@ -138,7 +162,7 @@ a:active {
   gap: 1rem;
 }
 .grid__generator--strength {
-  height: 56px;
+  height: 3.5rem;
   font-size: 1rem;
   color: var(--grey-600);
   background-color: var(--grey-850);
@@ -156,42 +180,18 @@ a:active {
   list-style-type: none;
 }
 .grid__generator--strength--level > li {
-  width: 10px;
-  height: 28px;
+  width: 0.625rem;
+  height: 1.75rem;
   border: 1px solid var(--white);
 }
 .grid__generator--button_generate {
-  height: 56px;
+  height: 3.5rem;
   font-size: 1rem;
   color: var(--grey-800);
   background-color: var(--green-200);
   border: none;
   cursor: pointer;
   margin-bottom: 1rem;
-}
-
-.disabled {
-  opacity: 0.5;
-  background-color: var(--grey-600);
-  cursor: not-allowed;
-}
-
-.strength_wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.copy_button {
-  cursor: pointer;
-  padding-right: 1rem;
-  height: 20px;
-}
-@media (min-width: 820px) {
-  .copy_button {
-    font-size: 1.5rem;
-    height: 25px;
-  }
 }
 
 .checkbox {

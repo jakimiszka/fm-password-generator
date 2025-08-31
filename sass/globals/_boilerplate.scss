@@ -20,11 +20,4 @@ body{
     justify-content: center;
     background-image: var(--gradient-1);
     color: var(--white);
-    
-    // @include u.breakpoint('large') {
-    //     height: 100vh;            
-    // }
-    // @include u.breakpoint('medium') {
-    //     height: 100vh;            
-    // }
 }
