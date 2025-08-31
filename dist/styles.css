@@ -89,14 +89,12 @@ a:active {
   flex-direction: column;
   gap: 1rem;
   height: auto;
-  min-width: 18.75rem;
-  max-width: 21.438rem;
-  width: 100%;
+  width: 21.438rem;
   padding: 1rem;
 }
 @media (min-width: 820px) {
   .grid {
-    max-width: 33.75rem;
+    width: 33.75rem;
   }
 }
 .grid__title {
@@ -105,10 +103,20 @@ a:active {
   color: var(--grey-600);
 }
 .grid__password {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: var(--grey-800);
+}
+.grid__password--toast {
+  display: none;
+  position: absolute;
+  top: 1rem;
+  right: -0.5rem;
+  color: var(--green-200);
+  background-color: transparent;
+  transform: translateY(-100%);
 }
 .grid__password--input_text {
   display: flex;

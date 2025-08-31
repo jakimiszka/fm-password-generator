@@ -9,6 +9,7 @@ const symbols_check = document.querySelector("#symbols");
 const strength_level = document.querySelector(".strength_level");
 const copy_button = document.querySelector('.copy_button');
 const password_value = document.querySelector(".grid__password--input_text");
+const copy_toast =  document.querySelector(".grid__password--toast");
 const numbers = '0123456789',
       letters = 'abcdefghijklmnopqrstuvwxyz',
       symbols = '!@#$%&*+_=\"\'<>?:;[]{}()\\/<>,.|^~';
@@ -53,7 +54,7 @@ function generatePassword(){
     let password = '';
     const passwordLength = Number(slider.value);
     const charSets = getcharSets();
-    
+
     if (passwordLength === 0) return '';
     // No options selected, use all chars
     if (charSets.length === 0) {
@@ -144,4 +145,8 @@ generate_button.addEventListener("click", () =>{
 copy_button.addEventListener('click', () => {
     const pass = password_value.innerHTML;
     navigator.clipboard.writeText(pass);
+    copy_toast.style.display = 'block';
+    setTimeout(() => {
+        copy_toast.style.display = 'none';
+    }, 1000);
 }); 
